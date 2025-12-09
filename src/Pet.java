@@ -19,16 +19,16 @@ public class Pet {
 
     public void birthday(){
         this.age++;
-        System.out.printf("%s turned %d!\n", this.name, this.age);
+        System.out.printf("%s turned %d!\n", name, age);
     }
 
     public void vaccinate(){
         if (!vaccinated){
             this.vaccinated = true;
-            System.out.printf("%s has been vaccinated!\n", this.name);
+            System.out.printf("%s has been vaccinated!\n", name);
         }
         else{
-            System.out.printf("%s is already vaccinated!\n", this.name);
+            System.out.printf("%s is already vaccinated!\n", name);
         }
     }
 }
