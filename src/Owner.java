@@ -36,6 +36,7 @@ public class Owner
     public void removepet(Pet pet) {pets.remove(pet);}
 
     public void petList() {
+        System.out.println(name + "'s pets list:");
         for (Pet pet : pets) {
             System.out.println(pet.getName() + " " + pet.getSpecies() + " " + pet.getAge());
         }
@@ -43,6 +44,6 @@ public class Owner
 
     @Override
     public String toString() {
-        return name + "\nPhone number: " + phone + "\n Email:" + email + "\nAddress:" + address + "\nGender:" + gender;
+        return name + "\nPhone number: " + phone + "\nEmail: " + email + "\nAddress: " + address + "\nGender: " + gender;
     }
 }
