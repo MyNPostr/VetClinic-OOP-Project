@@ -22,4 +22,31 @@ public class Validating {
         }
         return false;
     }
+
+    public static boolean isPetIdUnique(int id) {
+        for (Pet pet : Main.pets) {
+            if (pet.getId() == id) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isOwnerIdUnique(int id) {
+        for (Owner owner : Main.owners) {
+            if (owner.getId() == id) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isVetIdUnique(int id) {
+        for (Veterenarian vet : Main.vets) {
+            if (vet.getId() == id) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

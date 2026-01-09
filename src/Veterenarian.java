@@ -1,4 +1,5 @@
 public class Veterenarian {
+    private int id;
     private String name;
     private String phone;
     private String animalSpeciality; // home pets, farm animals, exotic animals or all of them
@@ -7,7 +8,8 @@ public class Veterenarian {
     private int rating;
     private int ratingcount;
 
-    public Veterenarian(String name, String phone, String animalspeciality, int experienceyears) {
+    public Veterenarian(int id, String name, String phone, String animalspeciality, int experienceyears) {
+        setId(id);
         setName(name);
         setPhone(phone);
         setAnimalSpeciality(animalspeciality);
@@ -16,6 +18,7 @@ public class Veterenarian {
         setRating(0, 0);
     }
 
+    public int getId() {return id;}
     public String getName() {return name;}
     public String getPhone() {return phone;}
     public String getAnimalSpeciality() {return animalSpeciality;}
@@ -30,6 +33,14 @@ public class Veterenarian {
         }
     }
 
+    public void setId(int id) {
+        if (Validating.isVetIdUnique(id)) {
+            this.id = id;
+        }
+        else {
+            throw new IllegalArgumentException("Id is already exists, please try again with another id!");
+        }
+    }
     public void setName(String name) {
         if (Validating.isValidStr(name)) {
             this.name = name;
@@ -87,6 +98,6 @@ public class Veterenarian {
 
     @Override
     public String toString() {
-        return name + "(" + animalSpeciality + " veterinarian with " + experienceYears + " years of experience)\nRating: " + getRating() + "\nCurrently at work: " + onWork;
+        return name + "(" + animalSpeciality + " veterinarian with " + experienceYears + " years of experience)\nRating: " + getRating() + "\nCurrently at work: " + onWork + "\nID: " + id;
     }
 }

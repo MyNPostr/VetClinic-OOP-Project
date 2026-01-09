@@ -1,31 +1,42 @@
-import javax.xml.validation.Validator;
 import java.util.ArrayList;
 
 public class Owner
 {
+    private int id;
     private String name;
     private String phone;
     private Gender gender;
     private String email;
     private String address;
-    private ArrayList<Pet> pets;
+    private ArrayList<Pet> ownpets;
 
-    public Owner(String name, String phone, String email, String address,  Gender gender) {
+    public Owner(int id, String name, String phone, String email, String address,  Gender gender) {
+        setId(id);
         setName(name);
         setPhone(phone);
         setEmail(email);
-        this.address = address;
+        setAddress(address);
         setGender(gender);
-        this.pets = new ArrayList<>();
+        this.ownpets = new ArrayList<>();
 
     }
 
+    public int getId() {return id;}
     public String getName() {return name;}
     public String getPhone() {return phone;}
     public String getEmail() {return email;}
     public String getAddress() {return address;}
     public Gender getGender() {return gender;}
-    public ArrayList<Pet> getPets() {return pets;}
+    public ArrayList<Pet> getPets() {return ownpets;}
+
+    public void setId(int id) {
+        if (Validating.isOwnerIdUnique(id)) {
+            this.id = id;
+        }
+        else {
+            throw new IllegalArgumentException("Id is already exists, please try again with another id!");
+        }
+    }
 
     public void setName(String name) {
         if (Validating.isValidStr(name)) {
@@ -65,18 +76,18 @@ public class Owner
         }
     }
 
-    public void addpet(Pet pet) {pets.add(pet);}
-    public void removepet(Pet pet) {pets.remove(pet);}
+    public void addpet(Pet pet) {ownpets.add(pet);}
+    public void removepet(Pet pet) {ownpets.remove(pet);}
 
     public void petList() {
         System.out.println(name + "'s pets list:");
-        for (Pet pet : pets) {
+        for (Pet pet : ownpets) {
             System.out.println(pet.getName() + " " + pet.getSpecies() + " " + pet.getAge());
         }
     }
 
     @Override
     public String toString() {
-        return name + "\nPhone number: " + phone + "\nEmail: " + email + "\nAddress: " + address + "\nGender: " + gender;
+        return name + "\nPhone number: " + phone + "\nEmail: " + email + "\nAddress: " + address + "\nGender: " + gender + "\nID: " + id;
     }
 }

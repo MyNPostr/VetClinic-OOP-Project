@@ -1,23 +1,35 @@
 public class Pet {
+    private int id;
     private String name;
     private String species;
     private int age;
     private Gender gender;
     private boolean vaccinated;
 
-    public Pet(String name, String species, int age, Gender gender, boolean vaccinated) {
+    public Pet(int id, String name, String species, int age, Gender gender, boolean vaccinated) {
+        setId(id);
         setName(name);
         setSpecies(species);
         setAge(age);
         setGender(gender);
-        this.vaccinated = vaccinated;
+        setVaccinated(vaccinated);
     }
 
+    public int getId() {return id;}
     public String getName() {return name;}
     public String getSpecies() {return species;}
     public int getAge() {return age;}
     public Gender getGender() {return gender;}
     public boolean isVaccinated() {return vaccinated;}
+
+    public void setId(int id) {
+        if (Validating.isPetIdUnique(id)) {
+            this.id = id;
+        }
+        else {
+            throw new IllegalArgumentException("Id is already exists, please try again with another id!");
+        }
+    }
 
     public void setName(String name) {
         if (Validating.isValidStr(name)) {
@@ -70,6 +82,6 @@ public class Pet {
 
     @Override
     public String toString() {
-        return name + "\nSpecies: " + species + "\n" + age + " years old\nGender: " + gender + "\nVaccinated: " + vaccinated;
+        return name + "\nSpecies: " + species + "\n" + age + " years old\nGender: " + gender + "\nVaccinated: " + vaccinated + "\nID: " + id;
     }
 }
