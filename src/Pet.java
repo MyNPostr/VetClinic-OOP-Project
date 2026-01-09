@@ -1,25 +1,21 @@
 public class Pet {
     private int id;
     private String name;
-    private String species;
-    private int age;
-    private Gender gender;
     private boolean vaccinated;
+    private Animal animal;
 
-    public Pet(int id, String name, String species, int age, Gender gender, boolean vaccinated) {
+    public Pet(int id, String name, boolean vaccinated, Animal animal) {
         setId(id);
         setName(name);
-        setSpecies(species);
-        setAge(age);
-        setGender(gender);
         setVaccinated(vaccinated);
+        this.animal = animal;
     }
 
     public int getId() {return id;}
     public String getName() {return name;}
-    public String getSpecies() {return species;}
-    public int getAge() {return age;}
-    public Gender getGender() {return gender;}
+    public int getAge() {return animal.getAge();}
+    public Gender getGender() {return animal.getGender();}
+    public String getBreed() {return animal.getBreed();}
     public boolean isVaccinated() {return vaccinated;}
 
     public void setId(int id) {
@@ -39,17 +35,9 @@ public class Pet {
             throw new IllegalArgumentException("Pet name is invalid, please try again with another name!");
         }
     }
-    public void setSpecies(String species) {
-        if (Validating.isValidStr(species)) {
-            this.species = species;
-        }
-        else {
-            throw new IllegalArgumentException("Species is invalid, please try again with another species!");
-        }
-    }
     public void setAge(int age) {
         if (age >= 0 && age <= 100) {
-            this.age = age;
+            animal.setAge(age);
         }
         else {
             throw new IllegalArgumentException("Age is invalid, please try again with another age!");
@@ -57,17 +45,28 @@ public class Pet {
     }
     public void setGender(Gender gender) {
         if (gender != null) {
-            this.gender = gender;
+            animal.setGender(gender);
         }
         else {
             throw new IllegalArgumentException("Gender is invalid, please try again with another gender!");
         }
     }
+
+    public void setBreed(String breed) {
+        if (breed != null) {
+            animal.setBreed(breed);
+        }
+        else {
+            throw new IllegalArgumentException("Breed is invalid, please try again with another breed!");
+        }
+    }
+
+
     public void setVaccinated(boolean vaccinated) {this.vaccinated = vaccinated;}
 
     public void birthday(){
-        this.age++;
-        System.out.printf("%s turned %d!\n", name, age);
+        animal.setAge(animal.getAge() + 1);
+        System.out.printf("%s turned %d!\n", name, animal.getAge());
     }
 
     public void vaccinate(){
@@ -82,6 +81,6 @@ public class Pet {
 
     @Override
     public String toString() {
-        return "(" + id + ") " + name + "\nSpecies: " + species + "\n" + age + " years old\nGender: " + gender + "\nVaccinated: " + vaccinated;
+        return "(" + id + ") " + name + " - " + animal.getType() + "\n" + animal.getAge() + " years old\nGender: " + animal.getGender() + "\nVaccinated: " + vaccinated;
     }
 }

@@ -82,7 +82,7 @@ public class Owner
     public void petList() {
         System.out.println(name + "'s pets list:");
         for (Pet pet : ownpets) {
-            System.out.println(pet.getName() + " " + pet.getSpecies() + " " + pet.getAge());
+            System.out.println(pet);
         }
     }
 
