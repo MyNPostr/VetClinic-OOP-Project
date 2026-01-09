@@ -82,6 +82,6 @@ public class Pet {
 
     @Override
     public String toString() {
-        return name + "\nSpecies: " + species + "\n" + age + " years old\nGender: " + gender + "\nVaccinated: " + vaccinated + "\nID: " + id;
+        return "(" + id + ") " + name + "\nSpecies: " + species + "\n" + age + " years old\nGender: " + gender + "\nVaccinated: " + vaccinated;
     }
 }

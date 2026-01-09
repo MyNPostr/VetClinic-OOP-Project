@@ -8,13 +8,13 @@ public class Veterenarian {
     private int rating;
     private int ratingcount;
 
-    public Veterenarian(int id, String name, String phone, String animalspeciality, int experienceyears) {
+    public Veterenarian(int id, String name, String phone, String animalspeciality, int experienceyears, boolean onwork) {
         setId(id);
         setName(name);
         setPhone(phone);
         setAnimalSpeciality(animalspeciality);
         setExperienceYears(experienceyears);
-        this.onWork = false;
+        this.onWork = onwork;
         setRating(0, 0);
     }
 
@@ -98,6 +98,6 @@ public class Veterenarian {
 
     @Override
     public String toString() {
-        return name + "(" + animalSpeciality + " veterinarian with " + experienceYears + " years of experience)\nRating: " + getRating() + "\nCurrently at work: " + onWork + "\nID: " + id;
+        return "(" + id + ") " + name + "(" + animalSpeciality + " veterinarian with " + experienceYears + " years of experience)\nRating: " + getRating() + "\nCurrently at work: " + onWork;
     }
 }

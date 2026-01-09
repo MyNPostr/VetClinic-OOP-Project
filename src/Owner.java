@@ -10,7 +10,7 @@ public class Owner
     private String address;
     private ArrayList<Pet> ownpets;
 
-    public Owner(int id, String name, String phone, String email, String address,  Gender gender) {
+    public Owner(int id, String name, String phone, String email, String address, Gender gender) {
         setId(id);
         setName(name);
         setPhone(phone);
@@ -76,8 +76,8 @@ public class Owner
         }
     }
 
-    public void addpet(Pet pet) {ownpets.add(pet);}
-    public void removepet(Pet pet) {ownpets.remove(pet);}
+    public void addownpet(Pet pet) {ownpets.add(pet);}
+    public void removeownpet(Pet pet) {ownpets.remove(pet);}
 
     public void petList() {
         System.out.println(name + "'s pets list:");
@@ -88,6 +88,6 @@ public class Owner
 
     @Override
     public String toString() {
-        return name + "\nPhone number: " + phone + "\nEmail: " + email + "\nAddress: " + address + "\nGender: " + gender + "\nID: " + id;
+        return "(" + id + ") " + name + "\nPhone number: " + phone + "\nEmail: " + email + "\nAddress: " + address + "\nGender: " + gender;
     }
 }
