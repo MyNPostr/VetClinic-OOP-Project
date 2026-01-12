@@ -196,9 +196,31 @@ public class Main {
 
     static void viewAllPets () {
         System.out.println("\n============ ALL PETS ===========");
+
         for (Pet pet : pets) {
             System.out.println(pet);
+
+            Animal animal = pet.getAnimal();
+
+            animal.makeSound();
+            animal.eat();
+
+            if (animal instanceof Dog) {
+                Dog dog = (Dog) animal;
+                dog.fetch();
+            }
+            else if (animal instanceof Cat) {
+                Cat cat = (Cat) animal;
+                cat.climb();
+            }
+            else if (animal instanceof Bird) {
+                Bird bird = (Bird) animal;
+                bird.sing();
+            }
+
+            System.out.println("--------------------------------");
         }
+
         System.out.println("Press Enter...");
         scanner.nextLine();
     }

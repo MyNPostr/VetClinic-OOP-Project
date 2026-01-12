@@ -10,7 +10,7 @@ public class Pet {
         setVaccinated(vaccinated);
         this.animal = animal;
     }
-
+    public Animal getAnimal() {return animal;}
     public int getId() {return id;}
     public String getName() {return name;}
     public int getAge() {return animal.getAge();}
