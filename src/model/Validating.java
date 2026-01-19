@@ -1,3 +1,7 @@
+package model;
+
+import java.util.List;
+
 public class Validating {
     public static boolean isNumber(String input){
         char[] chars = input.toCharArray();
@@ -23,8 +27,8 @@ public class Validating {
         return false;
     }
 
-    public static boolean isPetIdUnique(int id) {
-        for (Pet pet : Main.pets) {
+    public static boolean isPetIdUnique(int id, List<Pet> pets) {
+        for (Pet pet : pets) {
             if (pet.getId() == id) {
                 return false;
             }
@@ -32,8 +36,8 @@ public class Validating {
         return true;
     }
 
-    public static boolean isOwnerIdUnique(int id) {
-        for (Owner owner : Main.owners) {
+    public static boolean isOwnerIdUnique(int id, List<Owner> owners) {
+        for (Owner owner : owners) {
             if (owner.getId() == id) {
                 return false;
             }
@@ -41,8 +45,8 @@ public class Validating {
         return true;
     }
 
-    public static boolean isVetIdUnique(int id) {
-        for (Veterenarian vet : Main.vets) {
+    public static boolean isVetIdUnique(int id, List<Veterenarian> vets) {
+        for (Veterenarian vet : vets) {
             if (vet.getId() == id) {
                 return false;
             }

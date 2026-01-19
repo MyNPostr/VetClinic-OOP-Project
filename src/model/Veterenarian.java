@@ -1,4 +1,8 @@
-public class Veterenarian {
+package model;
+
+import exception.InvalidInputException;
+
+public class Veterenarian implements Treatable {
     private int id;
     private String name;
     private String phone;
@@ -34,7 +38,7 @@ public class Veterenarian {
     }
 
     public void setId(int id) {
-        if (Validating.isVetIdUnique(id)) {
+        if (id >= 0) {
             this.id = id;
         }
         else {
@@ -91,7 +95,7 @@ public class Veterenarian {
             System.out.println("Rating changed!");
         }
         else{
-            System.out.println("Invalid rating");
+            throw new InvalidInputException("Rating is invalid! Number should be between 1 and 5!");
         }
 
     }
@@ -100,4 +104,13 @@ public class Veterenarian {
     public String toString() {
         return "(" + id + ") " + name + "(" + animalSpeciality + " veterinarian with " + experienceYears + " years of experience)\nRating: " + getRating() + "\nCurrently at work: " + onWork;
     }
+
+    @Override
+    public void treat(Pet pet, String treatment) {
+        if (pet == null) throw new IllegalArgumentException("Pet cannot be null");
+        if (treatment == null || treatment.isBlank())
+            throw new IllegalArgumentException("Treatment cannot be empty");
+        System.out.println("Dr. " + getName() + " treats " + pet.getName() + ": " + treatment);
+    }
+
 }

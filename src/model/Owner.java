@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 public class Owner
@@ -10,7 +12,7 @@ public class Owner
     private String address;
     private ArrayList<Pet> ownpets;
 
-    public Owner(int id, String name, String phone, String email, String address, Gender gender) {
+    public Owner(int id, String name, String phone, String address, String email, Gender gender) {
         setId(id);
         setName(name);
         setPhone(phone);
@@ -30,7 +32,7 @@ public class Owner
     public ArrayList<Pet> getPets() {return ownpets;}
 
     public void setId(int id) {
-        if (Validating.isOwnerIdUnique(id)) {
+        if (id >= 0) {
             this.id = id;
         }
         else {
@@ -55,7 +57,7 @@ public class Owner
         }
     }
     public void setEmail(String email) {
-        if (Validating.isValidStr(email) &&  email.contains("@")) {
+        if (Validating.isValidStr(email) && email.contains("@")) {
             this.email = email;
         }
         else {

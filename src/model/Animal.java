@@ -1,3 +1,5 @@
+package model;
+
 public abstract class Animal {
 
     protected String type;
@@ -28,7 +30,9 @@ public abstract class Animal {
         System.out.println("Animal is sleeping");
     }
 
-    public String getType(){return this.type;}
+    public String getType() {
+        return getClass().getSimpleName();
+    }
     public int getAge() {return age;}
     public String getBreed() {return breed;}
     public Gender getGender() {return gender;}

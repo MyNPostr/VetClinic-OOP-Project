@@ -1,3 +1,5 @@
+package model;
+
 public class Pet {
     private int id;
     private String name;
@@ -19,7 +21,7 @@ public class Pet {
     public boolean isVaccinated() {return vaccinated;}
 
     public void setId(int id) {
-        if (Validating.isPetIdUnique(id)) {
+        if (id >= 0) {
             this.id = id;
         }
         else {

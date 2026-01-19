@@ -1,3 +1,5 @@
+package model;
+
 public class Cat extends Animal {
 
     protected boolean indoor;
@@ -23,6 +25,6 @@ public class Cat extends Animal {
 
     @Override
     public void sleep() {
-        System.out.println("Cat is sleeping");
+        System.out.println("model.Cat is sleeping");
     }
 }
