@@ -159,14 +159,14 @@ public class PetDao {
         Animal a = pet.getAnimal();
         String type = a.getClass().getSimpleName().toUpperCase();
 
-        ps.setString(4, type);
-        ps.setInt(5, a.getAge());
-        ps.setString(6, a.getBreed());
-        ps.setString(7, a.getGender().name());
+        ps.setString(3, type);
+        ps.setInt(4, a.getAge());
+        ps.setString(5, a.getBreed());
+        ps.setString(6, a.getGender().name());
 
+        ps.setObject(7, null);
         ps.setObject(8, null);
         ps.setObject(9, null);
-        ps.setObject(10, null);
 
         if (a instanceof Dog d) ps.setBoolean(8, d.isTrained());
         if (a instanceof Cat c) ps.setBoolean(9, c.isIndoor());
