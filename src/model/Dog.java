@@ -9,6 +9,10 @@ public class Dog extends Animal {
         this.trained = trained;
     }
 
+    public boolean isTrained() {
+        return trained;
+    }
+
     @Override
     public void makeSound() {
         System.out.println("Dog barks: Woof!");

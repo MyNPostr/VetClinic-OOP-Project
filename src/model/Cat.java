@@ -9,6 +9,10 @@ public class Cat extends Animal {
         this.indoor = indoor;
     }
 
+    public boolean isIndoor() {
+        return indoor;
+    }
+
     @Override
     public void makeSound() {
         System.out.println("Cat meows: Meow!");

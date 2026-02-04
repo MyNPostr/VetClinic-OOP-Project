@@ -1,5 +1,7 @@
 package menu;
 
+
+// OLD MENU, I DONT USE IT
 import exception.InvalidInputException;
 import model.*;
 import java.util.ArrayList;
@@ -294,28 +296,23 @@ public class VetMenu implements Menu {
         int ownerId = readInt();
 
         Owner selectedOwner = null;
+
         for (Owner owner : owners) {
             if (owner.getId() == ownerId) {
                 selectedOwner = owner;
-                break;
             }
         }
         if (selectedOwner == null) {
-            throw new InvalidInputException("Owner not found");
+            throw new InvalidInputException("Owner with this ID doesn't exist!");
         }
 
-        System.out.print("Enter Pet ID: ");
         int petId = readInt();
 
         for (Pet pet : pets) {
             if (pet.getId() == petId) {
                 selectedOwner.addownpet(pet);
-                System.out.println("Pet " + pet.getName() + " is added to " + selectedOwner.getName());
-                return;
             }
         }
-
-        throw new InvalidInputException("Pet not found");
     }
 
     private void addVeterinarian() throws InvalidInputException {

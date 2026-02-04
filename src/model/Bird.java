@@ -9,6 +9,11 @@ public class Bird extends Animal {
         this.hasteeth = hasteeth;
     }
 
+    public boolean hasTeeth() {
+        return hasteeth;
+    }
+
+
     @Override
     public void makeSound() {
         System.out.println("chirps: Tweet!");

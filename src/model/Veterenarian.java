@@ -2,6 +2,8 @@ package model;
 
 import exception.InvalidInputException;
 
+import java.math.BigDecimal;
+
 public class Veterenarian implements Treatable {
     private int id;
     private String name;
@@ -11,6 +13,7 @@ public class Veterenarian implements Treatable {
     private boolean onWork;
     private int rating;
     private int ratingcount;
+    private BigDecimal salary;
 
     public Veterenarian(int id, String name, String phone, String animalspeciality, int experienceyears, boolean onwork) {
         setId(id);
@@ -21,6 +24,7 @@ public class Veterenarian implements Treatable {
         this.onWork = onwork;
         setRating(0, 0);
     }
+
 
     public int getId() {return id;}
     public String getName() {return name;}
@@ -36,6 +40,7 @@ public class Veterenarian implements Treatable {
             return (double) rating / ratingcount;
         }
     }
+    public BigDecimal getSalary() {return salary;}
 
     public void setId(int id) {
         if (id >= 0) {
@@ -98,6 +103,16 @@ public class Veterenarian implements Treatable {
             throw new InvalidInputException("Rating is invalid! Number should be between 1 and 5!");
         }
 
+    }
+
+    public void setSalary(BigDecimal salary) {
+        if (salary == null) {
+            throw new IllegalArgumentException("Salary cannot be null");
+        }
+        if (salary.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Salary cannot be negative: " + salary);
+        }
+        this.salary = salary;
     }
 
     @Override

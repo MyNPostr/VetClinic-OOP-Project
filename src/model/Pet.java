@@ -1,26 +1,33 @@
 package model;
 
 public class Pet {
-    private int id;
+    private long id;
     private String name;
     private boolean vaccinated;
     private Animal animal;
 
-    public Pet(int id, String name, boolean vaccinated, Animal animal) {
-        setId(id);
+    public Pet(String name, boolean vaccinated, Animal animal) {
         setName(name);
         setVaccinated(vaccinated);
         this.animal = animal;
     }
+
+    public Pet(long id, String name, boolean vaccinated, Animal animal) {
+        setId(id);
+        setName(name);
+        setVaccinated(vaccinated);
+        setAnimal(animal);
+    }
+
     public Animal getAnimal() {return animal;}
-    public int getId() {return id;}
+    public long getId() {return id;}
     public String getName() {return name;}
     public int getAge() {return animal.getAge();}
     public Gender getGender() {return animal.getGender();}
     public String getBreed() {return animal.getBreed();}
     public boolean isVaccinated() {return vaccinated;}
 
-    public void setId(int id) {
+    public void setId(long id) {
         if (id >= 0) {
             this.id = id;
         }
@@ -61,6 +68,11 @@ public class Pet {
         else {
             throw new IllegalArgumentException("Breed is invalid, please try again with another breed!");
         }
+    }
+
+    public void setAnimal(Animal animal) {
+        if (animal == null) throw new IllegalArgumentException("Animal cannot be null");
+        this.animal = animal;
     }
 
 

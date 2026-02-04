@@ -1,7 +1,7 @@
-import menu.VetMenu;
+import menu.PetMenu;
 
 public class Main {
     public static void main(String[] args) {
-        new VetMenu().run();
+        new PetMenu().run();
     }
 }
