@@ -152,9 +152,8 @@ public class PetDao {
     }
 
     private void fillStatementFromPet(PreparedStatement ps, Pet pet) throws SQLException {
-        ps.setLong(1, pet.getId());
-        ps.setString(2, pet.getName());
-        ps.setBoolean(3, pet.isVaccinated());
+        ps.setString(1, pet.getName());
+        ps.setBoolean(2, pet.isVaccinated());
 
         Animal a = pet.getAnimal();
         String type = a.getClass().getSimpleName().toUpperCase();
@@ -168,9 +167,9 @@ public class PetDao {
         ps.setObject(8, null);
         ps.setObject(9, null);
 
-        if (a instanceof Dog d) ps.setBoolean(8, d.isTrained());
-        if (a instanceof Cat c) ps.setBoolean(9, c.isIndoor());
-        if (a instanceof Bird b) ps.setBoolean(10, b.hasTeeth());
+        if (a instanceof Dog d) ps.setBoolean(7, d.isTrained());
+        else if (a instanceof Cat c) ps.setBoolean(8, c.isIndoor());
+        else if (a instanceof Bird b) ps.setBoolean(9, b.hasTeeth());
     }
 
     private Pet mapRowToPet(ResultSet rs) throws SQLException {
